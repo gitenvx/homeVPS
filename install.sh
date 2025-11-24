@@ -1,42 +1,27 @@
 #!/bin/bash
-
-# Bersihkan terminal
 clear
-
-# Update dan upgrade paket sistem
-echo "Menjalankan apt update & upgrade... Mohon tunggu!"
 sudo apt update && sudo apt upgrade -y
-
-# Instal paket yang diperlukan
-echo "Menginstal paket yang dibutuhkan... Mohon tunggu!"
-sudo apt install -y python3 python3-pip docker-compose figlet cowsay lolcat neofetch git certbot nginx python3-certbot-nginx
-
-# Unduh skrip Python
-curl -o ~/bw.py -O https://raw.githubusercontent.com/yourtulloh/homeVPS/master/bw.py -s
-
+sudo apt install -y python3 python3-pip python3-venv docker-compose figlet cowsay lolcat neofetch git certbot nginx python3-certbot-nginx curl
+python3 -m venv /opt/bw-venv
+source /opt/bw-venv/bin/activate
+pip install --upgrade pip
+curl -s -o ~/bw.py https://raw.githubusercontent.com/gitenvx/homeVPS/master/bw.py
 clear
-
-# Set zona waktu
 timedatectl set-timezone Asia/Jakarta
-# Pesan konfirmasi
-echo "Paket telah berhasil di instal." | lolcat
-
-# Minta input nama header dan logo dari pengguna
 echo "Masukkan Nama Header:" | lolcat
 read header_name
 echo "Masukkan Nama Logo:" | lolcat
 read logo_name
-
-# Tambahkan perintah ke .bashrc
-echo -e "\ncowsay -f eyes $header_name | lolcat\nfiglet $logo_name | lolcat\ndate | lolcat\npython3 ~/bw.py | lolcat" >> ~/.bashrc
-
-# Tampilkan pesan sukses
+echo -e "\nsource /opt/bw-venv/bin/activate" >> ~/.bashrc
+echo "cowsay -f eyes $header_name | lolcat" >> ~/.bashrc
+echo "figlet $logo_name | lolcat" >> ~/.bashrc
+echo "date | lolcat" >> ~/.bashrc
+echo "python ~/bw.py | lolcat" >> ~/.bashrc
 figlet HomeVPS | lolcat
 echo "Instalasi berhasil" | lolcat
-
-# Bersihkan terminal dan jalankan skrip Python
 clear
+source /opt/bw-venv/bin/activate
 cowsay -f eyes $header_name | lolcat
 figlet $logo_name | lolcat
 date | lolcat
-python3 ~/bw.py | lolcat
+python ~/bw.py | lolcat
