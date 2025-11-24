@@ -24,4 +24,4 @@ source /opt/bw-venv/bin/activate
 cowsay -f eyes $header_name
 figlet $logo_name
 date
-python ~/bw.py
+python3 ~/bw.py
