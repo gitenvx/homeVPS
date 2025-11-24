@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 sudo apt update && sudo apt upgrade -y
-sudo apt install -y python3 python3-pip python3-venv docker-compose figlet cowsay lolcat neofetch git certbot nginx python3-certbot-nginx curl
+sudo apt install -y python3 python3-pip python3-venv docker-compose figlet cowsay neofetch git certbot nginx python3-certbot-nginx curl
 python3 -m venv /opt/bw-venv
 source /opt/bw-venv/bin/activate
 pip install --upgrade pip
@@ -16,9 +16,9 @@ echo -e "\nsource /opt/bw-venv/bin/activate" >> ~/.bashrc
 echo "cowsay -f eyes $header_name" >> ~/.bashrc
 echo "figlet $logo_name" >> ~/.bashrc
 echo "date" >> ~/.bashrc
-echo "python ~/bw.py" >> ~/.bashrc
+echo "python3 ~/bw.py" >> ~/.bashrc
 figlet HomeVPS
-echo "Instalasi berhasil" | lolcat
+echo "Instalasi berhasil"
 clear
 source /opt/bw-venv/bin/activate
 cowsay -f eyes $header_name
